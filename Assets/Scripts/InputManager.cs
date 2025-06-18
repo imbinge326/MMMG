@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 
 
 [DefaultExecutionOrder(-1)]
-public class InputManager : Singleton<InputManager>
+public class InputManager : MonoBehaviour
 {
     public delegate void StartTouchEvent(Vector2 position, float time);
     public event StartTouchEvent OnStartTouch;
