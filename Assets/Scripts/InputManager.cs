@@ -4,11 +4,11 @@ using UnityEngine.InputSystem;
 
 
 [DefaultExecutionOrder(-1)]
-public class InputManager : Singleton<InputManager>
+public class InputManager : MonoBehaviour
 {
-    public delegate void StartTouchEvent(Vector2 position, float time);
+    public delegate void StartTouchEvent(Vector3 position, float time);
     public event StartTouchEvent OnStartTouch;
-    public delegate void EndTouchEvent(Vector2 position, float time);
+    public delegate void EndTouchEvent(Vector3 position, float time);
     public event EndTouchEvent OnEndTouch;
     private TouchControls touchControls;
 
