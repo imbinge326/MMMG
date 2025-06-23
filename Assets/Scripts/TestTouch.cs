@@ -1,3 +1,4 @@
+using UnityEditor;
 using UnityEngine;
 
 public class TestTouch : MonoBehaviour
@@ -20,10 +21,14 @@ public class TestTouch : MonoBehaviour
         inputManager.OnEndTouch -= Move;
     }
 
-    public void Move(Vector2 screenPos, float time)
+    public void Move(Vector3 screenPos, float time)
     {
-        Vector3 screenCoordinates = new Vector3(screenPos.x, screenPos.y, camMain.nearClipPlane + 10);
-        Vector3 worldCoordinates = camMain.ScreenToWorldPoint(screenCoordinates);
-        transform.position = worldCoordinates;
+        Vector3 raycast = new Vector3(screenPos.x, screenPos.y, screenPos.z);
+        Ray ray = camMain.ScreenPointToRay(raycast);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit, 1000))
+        {
+            transform.position = hit.point;
+        }        
     }
 }
