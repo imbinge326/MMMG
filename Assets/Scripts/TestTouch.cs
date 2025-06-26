@@ -29,6 +29,6 @@ public class TestTouch : MonoBehaviour
         if (Physics.Raycast(ray, out hit, 1000))
         {
             transform.position = hit.point;
-        }        
+        }
     }
 }
