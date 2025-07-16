@@ -1,12 +1,12 @@
 using UnityEngine;
+using static CheckPlayerAndBlock;
 
 public class BlockTouch : MonoBehaviour
 {
     public GameObject correspondingUICoordsGameObject;
     private Vector3 correspondingUICoords;
-    public CheckPlayerAndBlock checkPlayerAndBlockRef;
 
-    void Awake()
+    void Start()
     {
         correspondingUICoords = correspondingUICoordsGameObject.transform.position;
     }
@@ -14,7 +14,7 @@ public class BlockTouch : MonoBehaviour
     void OnMouseDown()
     {
         print("Mouse Click");
-        checkPlayerAndBlockRef.CheckBlockWalkable(correspondingUICoords);
+        CheckPlayerAndBlockInstance.CheckBlockWalkable(correspondingUICoords);
     }
 
     void OnMouseUp()

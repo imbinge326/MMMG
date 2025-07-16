@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 [DefaultExecutionOrder(-1)]
 public class InputManager : MonoBehaviour
 {
+    public static InputManager InputManagerInstance { get; private set;}
     public delegate void StartTouchEvent(Vector3 position, float time);
     public event StartTouchEvent OnStartTouch;
     public delegate void EndTouchEvent(Vector3 position, float time);
@@ -14,6 +15,15 @@ public class InputManager : MonoBehaviour
 
     private void Awake()
     {
+        if (InputManagerInstance != null && InputManagerInstance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            InputManagerInstance = this;
+        }
+
         touchControls = new TouchControls();
     }
 

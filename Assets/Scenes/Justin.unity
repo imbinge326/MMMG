@@ -705,6 +705,54 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1275535625
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1275535627}
+  - component: {fileID: 1275535626}
+  m_Layer: 0
+  m_Name: CheckBlockManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1275535626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1275535625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19432bd04ddacb74ca3319cc00feb878, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerUICoords: {x: 0, y: 0, z: 0}
+  startingPointUICoords: {fileID: 678933956}
+  canWalk: 0
+  distance: 100
+--- !u!4 &1275535627
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1275535625}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1421402649
 GameObject:
   m_ObjectHideFlags: 0
@@ -827,7 +875,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   correspondingUICoordsGameObject: {fileID: 678933956}
-  checkPlayerAndBlockRef: {fileID: 1979934964}
 --- !u!1 &1493592893
 GameObject:
   m_ObjectHideFlags: 0
@@ -861,7 +908,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   correspondingUICoordsGameObject: {fileID: 935186046}
-  checkPlayerAndBlockRef: {fileID: 1979934964}
 --- !u!65 &1493592895
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1271,7 +1317,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   correspondingUICoordsGameObject: {fileID: 1247621695}
-  checkPlayerAndBlockRef: {fileID: 1979934964}
 --- !u!65 &1941358416
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1465,7 +1510,6 @@ GameObject:
   - component: {fileID: 1979934961}
   - component: {fileID: 1979934960}
   - component: {fileID: 1979934963}
-  - component: {fileID: 1979934964}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -1553,26 +1597,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 279b790c7103c4445b0db67ed2f1f996, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputManager: {fileID: 1132274821}
+  newPosition: {x: 0, y: 0, z: 0}
   baseSpeed: 1
   tempCube: {fileID: 5506550389566741251, guid: d010ef224b4e84a488e1c10367d4e94a, type: 3}
-  checkPlayerAndBlockRef: {fileID: 1979934964}
---- !u!114 &1979934964
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1979934958}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19432bd04ddacb74ca3319cc00feb878, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerUICoords: {x: 0, y: 0, z: 0}
-  startingPointUICoords: {fileID: 678933956}
-  canWalk: 0
-  distance: 5000
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1590,3 +1617,4 @@ SceneRoots:
   - {fileID: 678933957}
   - {fileID: 1247621696}
   - {fileID: 935186047}
+  - {fileID: 1275535627}

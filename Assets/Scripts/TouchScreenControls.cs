@@ -1,14 +1,13 @@
-using UnityEditor;
 using UnityEngine;
+using static CheckPlayerAndBlock;
+using static InputManager;
 
 public class TouchScreenControls : MonoBehaviour
 {
-    public InputManager inputManager;
     private Camera camMain;
-    private Vector3 newPosition;
+    [SerializeField] private Vector3 newPosition;
     public float baseSpeed = 1;
     public GameObject tempCube;
-    public CheckPlayerAndBlock checkPlayerAndBlockRef;
 
     void Awake()
     {
@@ -22,12 +21,12 @@ public class TouchScreenControls : MonoBehaviour
 
     void OnEnable()
     {
-        inputManager.OnStartTouch += Move;
+        InputManagerInstance.OnStartTouch += Move;
     }
 
     void OnDisable()
     {
-        inputManager.OnEndTouch -= Move;
+        InputManagerInstance.OnEndTouch -= Move;
     }
 
     public void Move(Vector3 screenPos, float time)
@@ -50,21 +49,23 @@ public class TouchScreenControls : MonoBehaviour
     {
         transform.position = new Vector3(Mathf.Lerp(transform.position.x, moveCharacter.x, Time.deltaTime * speed), Mathf.Lerp(transform.position.y, moveCharacter.y, Time.deltaTime * speed), Mathf.Lerp(transform.position.z, moveCharacter.z, Time.deltaTime * speed));
 
-        if (Time.deltaTime <= 0)
-        {
-            checkPlayerAndBlockRef.canWalk = false;
-        }
     }
 
     void Update()
     {
+        
         if (transform.position != newPosition)
         {
-            if (checkPlayerAndBlockRef.canWalk == true)
+            if (CheckPlayerAndBlockInstance.canWalk == true)
             {
                 MoveLerp(newPosition, baseSpeed);
             }
         }
-
+        /*
+        else if (transform.position == newPosition)
+        {
+            CheckPlayerAndBlockInstance.SetCanWalkFalse();
+        }
+        */
     }
 }
