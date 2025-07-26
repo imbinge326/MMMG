@@ -29,19 +29,27 @@ public class TouchScreenControls : MonoBehaviour
         InputManagerInstance.OnEndTouch -= Move;
     }
 
-    public void Move(Vector3 screenPos, float time)
+    public void Move(Vector3 screenPos)
     {
         Vector3 raycast = new Vector3(screenPos.x, screenPos.y, screenPos.z);
         Ray ray = camMain.ScreenPointToRay(raycast);
         RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit, 1000))
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, LayerMask.GetMask("Blocks")))
         {
             newPosition = hit.point;
+
+            // remove below code in final build
             Vector3 screenPointCoords = camMain.WorldToScreenPoint(newPosition);
             screenPointCoords.z = 0;
             print(screenPointCoords);
             Instantiate(tempCube, screenPointCoords, Quaternion.identity);
+            // end section
+
+        }
+        else if (Physics.Raycast(ray, out hit, Mathf.Infinity, LayerMask.GetMask("Interactables")))
+        {
+            
         }
     }
 

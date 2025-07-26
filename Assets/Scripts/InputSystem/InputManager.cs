@@ -7,9 +7,9 @@ using UnityEngine.InputSystem;
 public class InputManager : MonoBehaviour
 {
     public static InputManager InputManagerInstance { get; private set;}
-    public delegate void StartTouchEvent(Vector3 position, float time);
+    public delegate void StartTouchEvent(Vector3 position);
     public event StartTouchEvent OnStartTouch;
-    public delegate void EndTouchEvent(Vector3 position, float time);
+    public delegate void EndTouchEvent(Vector3 position);
     public event EndTouchEvent OnEndTouch;
     private TouchControls touchControls;
 
@@ -46,18 +46,22 @@ public class InputManager : MonoBehaviour
     private void StartTouch(InputAction.CallbackContext context)
     {
         //Debug.Log("Touch started" + touchControls.Touch.TouchPosition.ReadValue<Vector2>());
+        
         if (OnStartTouch != null)
         {
-            OnStartTouch(touchControls.Touch.TouchPosition.ReadValue<Vector2>(), (float)context.startTime);
+            OnStartTouch(touchControls.Touch.TouchPosition.ReadValue<Vector2>());
         }
+        
     }
 
     private void EndTouch(InputAction.CallbackContext context)
     {
         //Debug.Log("Touch ended" + touchControls.Touch.TouchPosition.ReadValue<Vector2>());
+        
         if (OnEndTouch != null)
         {
-            OnEndTouch(touchControls.Touch.TouchPosition.ReadValue<Vector2>(), (float)context.time);
+            OnEndTouch(touchControls.Touch.TouchPosition.ReadValue<Vector2>());
         }
+        
     }
 }
