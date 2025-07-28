@@ -4,7 +4,7 @@ using static CheckPlayerAndBlock;
 public class BlockTouch : MonoBehaviour
 {
     public GameObject correspondingUICoordsGameObject;
-    private Vector3 correspondingUICoords;
+    public Vector3 correspondingUICoords;
 
     void Start()
     {

@@ -163,6 +163,7 @@ GameObject:
   - component: {fileID: 262639451}
   - component: {fileID: 262639450}
   - component: {fileID: 262639449}
+  - component: {fileID: 262639453}
   m_Layer: 7
   m_Name: TestButton
   m_TagString: Untagged
@@ -256,11 +257,28 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.4, y: 8.56, z: -14.17}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &262639453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 262639448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97832f7360fa59d4ba09a5da712ce406, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movableBlock: {fileID: 1875835349}
+  movableBlockScreenObjA: {fileID: 1580067659}
+  movableBlockScreenObjB: {fileID: 2041974850}
+  movableBlockCoordsA: {x: -1.79, y: 9.9, z: -6.67}
+  movableBlockCoordsB: {x: 6.39, y: 9.9, z: -6.67}
 --- !u!1 &502949265
 GameObject:
   m_ObjectHideFlags: 0
@@ -985,6 +1003,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   correspondingUICoordsGameObject: {fileID: 678933956}
+  correspondingUICoords: {x: 0, y: 0, z: 0}
 --- !u!1 &1493592893
 GameObject:
   m_ObjectHideFlags: 0
@@ -1018,6 +1037,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   correspondingUICoordsGameObject: {fileID: 935186046}
+  correspondingUICoords: {x: 0, y: 0, z: 0}
 --- !u!65 &1493592895
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1329,7 +1349,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1580067660}
   m_Layer: 0
-  m_Name: 'Cube Screen4 '
+  m_Name: Movable 1 Screen A
   m_TagString: Untagged
   m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -1439,7 +1459,7 @@ GameObject:
   - component: {fileID: 1875835351}
   - component: {fileID: 1875835350}
   m_Layer: 6
-  m_Name: Cube (4)
+  m_Name: Movable 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1458,6 +1478,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   correspondingUICoordsGameObject: {fileID: 1580067659}
+  correspondingUICoords: {x: 0, y: 0, z: 0}
 --- !u!65 &1875835351
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1541,7 +1562,7 @@ Transform:
   m_GameObject: {fileID: 1875835349}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.79, y: 9.9, z: -6.67}
+  m_LocalPosition: {x: -1.97, y: 9.9, z: -6.67}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -1580,6 +1601,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   correspondingUICoordsGameObject: {fileID: 1247621695}
+  correspondingUICoords: {x: 0, y: 0, z: 0}
 --- !u!65 &1941358416
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1863,6 +1885,37 @@ MonoBehaviour:
   newPosition: {x: 0, y: 0, z: 0}
   baseSpeed: 1
   tempCube: {fileID: 5506550389566741251, guid: d010ef224b4e84a488e1c10367d4e94a, type: 3}
+--- !u!1 &2041974850
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2041974851}
+  m_Layer: 0
+  m_Name: Movable 1 Screen B
+  m_TagString: Untagged
+  m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2041974851
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2041974850}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 232, y: 380.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1884,3 +1937,4 @@ SceneRoots:
   - {fileID: 1275535627}
   - {fileID: 262639452}
   - {fileID: 1580067660}
+  - {fileID: 2041974851}
