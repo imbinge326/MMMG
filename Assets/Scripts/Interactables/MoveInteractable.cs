@@ -1,14 +1,26 @@
 using UnityEngine;
 
-public class Interactable : MonoBehaviour
+public class MoveInteractable : MonoBehaviour
 {
+    [Header("Setup")]
+    [Header("Block In World")]
+    [Tooltip("PreFlipFlop Coords")]
+    public Vector3 movableBlockCoordsA;
+
+    [Tooltip("PostFlipFlop Coords")]
+    public Vector3 movableBlockCoordsB;
+
+    [Header("Block On Screen")]
     public GameObject movableBlock;
+
+    [Tooltip("PreFlipFlop Coords")]
     public GameObject movableBlockScreenObjA;
     private Vector3 movableBlockScreenObjACoords;
+
+    [Tooltip("PostFlipFlop Coords")]
     public GameObject movableBlockScreenObjB;
     private Vector3 movableBlockScreenObjBCoords;
-    public Vector3 movableBlockCoordsA;
-    public Vector3 movableBlockCoordsB;
+
     private BlockTouch blockTouchRef;
     private bool flipFlop;
 

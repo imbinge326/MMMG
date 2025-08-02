@@ -5,7 +5,7 @@ using static InputManager;
 public class TouchScreenControls : MonoBehaviour
 {
     private Camera camMain;
-    [SerializeField] private Vector3 newPosition;
+    private Vector3 newPosition;
     public float baseSpeed = 1;
     public GameObject tempCube;
 
@@ -66,6 +66,7 @@ public class TouchScreenControls : MonoBehaviour
         {
             if (CheckPlayerAndBlockInstance.canWalk == true)
             {
+                newPosition = transform.parent.position;
                 MoveLerp(newPosition, baseSpeed);
             }
         }
