@@ -1,4 +1,5 @@
 using UnityEngine;
+using static CheckPlayerAndBlock;
 
 public class RotateInteractables : MonoBehaviour
 {
@@ -9,22 +10,22 @@ public class RotateInteractables : MonoBehaviour
 
     [Header("In World Transform")]
     public GameObject stateAObject;
-    private Transform stateATransform;
+    private Vector3 stateAPos;
 /// <summary>
 /// 
 /// </summary>
     public GameObject stateBObject;
-    private Transform stateBTransform;
+    private Vector3 stateBPos;
 /// <summary>
 /// 
 /// </summary>
     public GameObject stateCObject;
-    private Transform stateCTransform;
+    private Vector3 stateCPos;
 /// <summary>
 /// 
 /// </summary>
     public GameObject stateDObject;
-    private Transform stateDTransform;
+    private Vector3 stateDPos;
 
     [Header("On Screen Coords")]
     public GameObject stateAScreenObject;
@@ -49,13 +50,15 @@ public class RotateInteractables : MonoBehaviour
     [Header("Rotatable Block")]
     public GameObject rotatableBlock;
     private BlockTouch blockTouchRef;
+    public bool resetPlayerUICoords;
 
     void Start()
     {
-        stateATransform = stateAObject.transform;
-        stateBTransform = stateBObject.transform;
-        stateCTransform = stateCObject.transform;
-        stateDTransform = stateDObject.transform;
+        stateAPos = stateAObject.transform.position;
+        stateBPos = stateBObject.transform.position;
+        stateCPos = stateCObject.transform.position;
+        stateDPos = stateDObject.transform.position;
+
         
 
         stateAScreenCoords = stateAScreenObject.transform.position;
@@ -79,29 +82,41 @@ public class RotateInteractables : MonoBehaviour
         {
             case ChooseState.StateA:
                 blockTouchRef.correspondingUICoords = stateBScreenCoords;
-                rotatableBlock.transform.position = stateBTransform.position;
-                rotatableBlock.transform.rotation = stateBTransform.rotation;
+                rotatableBlock.transform.position = stateBPos;
+                if (resetPlayerUICoords)
+                {
+                    CheckPlayerAndBlockInstance.playerUICoords = stateBScreenCoords;
+                }
                 chooseState = ChooseState.StateB;
                 break;
 
             case ChooseState.StateB:
                 blockTouchRef.correspondingUICoords = stateCScreenCoords;
-                rotatableBlock.transform.position = stateCTransform.position;
-                rotatableBlock.transform.rotation = stateCTransform.rotation;
+                rotatableBlock.transform.position = stateCPos;
+                if (resetPlayerUICoords)
+                {
+                    CheckPlayerAndBlockInstance.playerUICoords = stateCScreenCoords;
+                }
                 chooseState = ChooseState.StateC;
                 break;
 
             case ChooseState.StateC:
                 blockTouchRef.correspondingUICoords = stateDScreenCoords;
-                rotatableBlock.transform.position = stateDTransform.position;
-                rotatableBlock.transform.rotation = stateDTransform.rotation;
+                rotatableBlock.transform.position = stateDPos;
+                if (resetPlayerUICoords)
+                {
+                    CheckPlayerAndBlockInstance.playerUICoords = stateDScreenCoords;
+                }
                 chooseState = ChooseState.StateD;
                 break;
 
             case ChooseState.StateD:
                 blockTouchRef.correspondingUICoords = stateAScreenCoords;
-                rotatableBlock.transform.position = stateATransform.position;
-                rotatableBlock.transform.rotation = stateATransform.rotation;
+                rotatableBlock.transform.position = stateAPos;
+                if (resetPlayerUICoords)
+                {
+                    CheckPlayerAndBlockInstance.playerUICoords = stateAScreenCoords;
+                }
                 chooseState = ChooseState.StateA;
                 break;
         }
