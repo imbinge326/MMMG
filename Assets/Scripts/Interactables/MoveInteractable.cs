@@ -1,14 +1,17 @@
 using UnityEngine;
+using static CheckPlayerAndBlock;
 
 public class MoveInteractable : MonoBehaviour
 {
     [Header("Setup")]
     [Header("Block In World")]
     [Tooltip("PreFlipFlop Coords")]
-    public Vector3 movableBlockCoordsA;
+    public GameObject movableBlockA;
+    private Vector3 movableBlockCoordsA;
 
     [Tooltip("PostFlipFlop Coords")]
-    public Vector3 movableBlockCoordsB;
+    public GameObject movableBlockB;
+    private Vector3 movableBlockCoordsB;
 
     [Header("Block On Screen")]
     public GameObject movableBlock;
@@ -22,10 +25,13 @@ public class MoveInteractable : MonoBehaviour
     private Vector3 movableBlockScreenObjBCoords;
 
     private BlockTouch blockTouchRef;
-    private bool flipFlop;
+    private bool flipFlop = true;
 
     void Start()
     {
+        movableBlockCoordsA = movableBlockA.transform.position;
+        movableBlockCoordsB = movableBlockB.transform.position;
+
         movableBlockScreenObjACoords = movableBlockScreenObjA.transform.position;
         movableBlockScreenObjBCoords = movableBlockScreenObjB.transform.position;
         blockTouchRef = movableBlock.GetComponent<BlockTouch>();
@@ -42,11 +48,13 @@ public class MoveInteractable : MonoBehaviour
         if (flipFlop)
         {
             blockTouchRef.correspondingUICoords = movableBlockScreenObjBCoords;
+            CheckPlayerAndBlockInstance.playerUICoords = movableBlockScreenObjBCoords;
             movableBlock.transform.position = movableBlockCoordsB;
         }
         else
         {
             blockTouchRef.correspondingUICoords = movableBlockScreenObjACoords;
+            CheckPlayerAndBlockInstance.playerUICoords = movableBlockScreenObjACoords;
             movableBlock.transform.position = movableBlockCoordsA;
         }
 
