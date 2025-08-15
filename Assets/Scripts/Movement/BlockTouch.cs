@@ -16,12 +16,12 @@ public class BlockTouch : MonoBehaviour
 
     void OnMouseDown()
     {
-        print("Mouse Click");
+        //print("Mouse Click");
         CheckPlayerAndBlockInstance.CheckBlockWalkable(correspondingUICoords, this.transform);
     }
 
     void OnMouseUp()
     {
-        print("Mouse Leave");
+        //print("Mouse Leave");
     }
 }

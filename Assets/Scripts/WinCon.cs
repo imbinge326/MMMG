@@ -1,6 +1,12 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class WinCon : MonoBehaviour
 {
-    public bool itemA;
+    public List<bool> items;
+
+    void Start()
+    {
+        items = new List<bool>();
+    }
 }

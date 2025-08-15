@@ -61,8 +61,4 @@ public class MoveInteractable : MonoBehaviour
         flipFlop = !flipFlop;
     }
     
-    void OnMouseUp()
-    {
-        
-    }
 }
