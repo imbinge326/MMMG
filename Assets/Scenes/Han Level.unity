@@ -5270,6 +5270,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseSpeed: 5
+  tempCube: {fileID: 5506550389566741251, guid: d010ef224b4e84a488e1c10367d4e94a, type: 3}
 --- !u!114 &1611534143
 MonoBehaviour:
   m_ObjectHideFlags: 0

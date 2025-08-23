@@ -9,7 +9,7 @@ public class SpawnTempCube : MonoBehaviour
         time -= Time.deltaTime;
         if (time <= 0)
         {
-            Destroy(this.gameObject);
+            //Destroy(this.gameObject);
         }
     }
 }
