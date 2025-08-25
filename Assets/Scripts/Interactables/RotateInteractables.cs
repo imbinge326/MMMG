@@ -50,7 +50,7 @@ public class RotateInteractables : MonoBehaviour
     [Header("Rotatable Block")]
     public GameObject rotatableBlock;
     private BlockTouch blockTouchRef;
-    public bool resetPlayerUICoords;
+    private AbleToRotate ableToRotateRef;
 
     void Start()
     {
@@ -59,7 +59,7 @@ public class RotateInteractables : MonoBehaviour
         stateCPos = stateCObject.transform.position;
         stateDPos = stateDObject.transform.position;
 
-        
+
 
         stateAScreenCoords = stateAScreenObject.transform.position;
         stateBScreenCoords = stateBScreenObject.transform.position;
@@ -74,51 +74,57 @@ public class RotateInteractables : MonoBehaviour
         {
             Debug.LogWarning("Block Touch not found");
         }
+        
+        ableToRotateRef = GetComponent<AbleToRotate>();
     }
 
     public void OnMouseDown()
     {
-        switch (chooseState)
+        foreach (var obj in ableToRotateRef.rotatables)
         {
-            case ChooseState.StateA:
-                blockTouchRef.correspondingUICoords = stateBScreenCoords;
-                rotatableBlock.transform.position = stateBPos;
-                if (resetPlayerUICoords)
-                {
-                    CheckPlayerAndBlockInstance.playerUICoords = stateBScreenCoords;
-                }
-                chooseState = ChooseState.StateB;
+            if (obj.GetComponentInChildren<TouchScreenControls>())
+            {
+                ableToRotateRef.canRotate = false;
                 break;
+            }
+            else
+            {
+                ableToRotateRef.canRotate = true;
+            }
+        }
+        
+        if (ableToRotateRef.canRotate)
+        {
+            switch (chooseState)
+            {
+                case ChooseState.StateA:
+                    blockTouchRef.correspondingUICoords = stateBScreenCoords;
+                    rotatableBlock.transform.position = stateBPos;
 
-            case ChooseState.StateB:
-                blockTouchRef.correspondingUICoords = stateCScreenCoords;
-                rotatableBlock.transform.position = stateCPos;
-                if (resetPlayerUICoords)
-                {
-                    CheckPlayerAndBlockInstance.playerUICoords = stateCScreenCoords;
-                }
-                chooseState = ChooseState.StateC;
-                break;
+                    chooseState = ChooseState.StateB;
+                    break;
 
-            case ChooseState.StateC:
-                blockTouchRef.correspondingUICoords = stateDScreenCoords;
-                rotatableBlock.transform.position = stateDPos;
-                if (resetPlayerUICoords)
-                {
-                    CheckPlayerAndBlockInstance.playerUICoords = stateDScreenCoords;
-                }
-                chooseState = ChooseState.StateD;
-                break;
+                case ChooseState.StateB:
+                    blockTouchRef.correspondingUICoords = stateCScreenCoords;
+                    rotatableBlock.transform.position = stateCPos;
 
-            case ChooseState.StateD:
-                blockTouchRef.correspondingUICoords = stateAScreenCoords;
-                rotatableBlock.transform.position = stateAPos;
-                if (resetPlayerUICoords)
-                {
-                    CheckPlayerAndBlockInstance.playerUICoords = stateAScreenCoords;
-                }
-                chooseState = ChooseState.StateA;
-                break;
+                    chooseState = ChooseState.StateC;
+                    break;
+
+                case ChooseState.StateC:
+                    blockTouchRef.correspondingUICoords = stateDScreenCoords;
+                    rotatableBlock.transform.position = stateDPos;
+
+                    chooseState = ChooseState.StateD;
+                    break;
+
+                case ChooseState.StateD:
+                    blockTouchRef.correspondingUICoords = stateAScreenCoords;
+                    rotatableBlock.transform.position = stateAPos;
+
+                    chooseState = ChooseState.StateA;
+                    break;
+            }
         }
     }
 }
