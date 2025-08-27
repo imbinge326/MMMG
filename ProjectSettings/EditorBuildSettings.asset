@@ -9,9 +9,18 @@ EditorBuildSettings:
     path: Assets/Scenes/Demo Scene.unity
     guid: c5d13548b44ede84f87070f207bfb53a
   - enabled: 1
+    path: Assets/Scenes/MobileUi.unity
+    guid: dc6cab75b11b00847b9f6f7707e0f0c4
+  - enabled: 1
+    path: Assets/Scenes/Jediah Level.unity
+    guid: 6d7043b6bd8662a479634054898d4d41
+  - enabled: 1
+    path: Assets/Scenes/Tutorial.unity
+    guid: d6aeccc3d4dda8041b2d4bcf6c6b73cf
+  - enabled: 1
     path: Assets/Scenes/Han Level.unity
     guid: 60e1b4c84c290fd43bd4e21cce6ea5e3
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Win.unity
     guid: 1a9fe3307fcda6249b73c8490f4562b8
   m_configObjects:
