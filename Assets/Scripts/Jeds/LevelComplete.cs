@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System.Collections;
 
 public class LevelComplete : MonoBehaviour
 {
@@ -9,8 +10,14 @@ public class LevelComplete : MonoBehaviour
     [SerializeField] private bool isFirstItem;
     [SerializeField] private bool isLastItem;
     [SerializeField] private GameObject itemToEnable; // Reference to the item you want to enable
+
+    [Header("Audio Settings")]
+    [SerializeField] private AudioClip firstItemSound;
+    [SerializeField] private AudioClip winSound;
+
     private SaveSystem saveSystem;
     private bool collected = false; // Safety flag to prevent multiple triggers
+    private AudioSource audioSource;
 
     void Start()
     {
@@ -18,6 +25,14 @@ public class LevelComplete : MonoBehaviour
         if (saveSystem == null)
         {
             Debug.LogError("SaveSystem not found");
+        }
+
+        // Setup audio source
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null && (firstItemSound != null || winSound != null))
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+            audioSource.playOnAwake = false;
         }
 
         // Only deactivate if it's ONLY the last item (not both first AND last)
@@ -35,6 +50,33 @@ public class LevelComplete : MonoBehaviour
         // Always complete the level first
         saveSystem.CompleteLevel(itemIndex);
 
+        // Start the collection process with audio
+        StartCoroutine(HandleCollection());
+    }
+
+    private IEnumerator HandleCollection()
+    {
+        // Play appropriate sound and wait for it to finish
+        if (isLastItem || (isFirstItem && isLastItem))
+        {
+            // This is the last item or only item - play win sound
+            if (winSound != null && audioSource != null)
+            {
+                audioSource.PlayOneShot(winSound);
+                yield return new WaitForSeconds(winSound.length);
+            }
+        }
+        else if (isFirstItem)
+        {
+            // This is the first item - play first item sound
+            if (firstItemSound != null && audioSource != null)
+            {
+                audioSource.PlayOneShot(firstItemSound);
+                yield return new WaitForSeconds(firstItemSound.length);
+            }
+        }
+
+        // Now handle the game logic after audio finishes
         if (isFirstItem && isLastItem)
         {
             // Single item in scene - show win UI and destroy
