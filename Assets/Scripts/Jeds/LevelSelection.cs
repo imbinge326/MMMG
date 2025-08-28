@@ -10,7 +10,6 @@ public class LevelSelection : MonoBehaviour
     [SerializeField] private RectTransform level1;
     [SerializeField] private RectTransform level2;
     [SerializeField] private RectTransform level3;
-    [SerializeField] private RectTransform level4;
 
     [Header("Level Buttons")]
     [SerializeField] private Button level1Button;
@@ -33,7 +32,7 @@ public class LevelSelection : MonoBehaviour
 
     void Awake()
     {
-        options = new RectTransform[] { level1, level2, level3, level4 };
+        options = new RectTransform[] { level1, level2, level3 };
 
         // Get reference to SaveSystem
         saveSystem = FindFirstObjectByType<SaveSystem>();
