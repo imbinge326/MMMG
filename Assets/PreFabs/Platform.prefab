@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1405398142576962479}
   - component: {fileID: 6758252124252693826}
   - component: {fileID: 313454074789284262}
+  - component: {fileID: 3718648417664719784}
   m_Layer: 6
   m_Name: Platform
   m_TagString: Untagged
@@ -104,12 +105,12 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 11.000002, z: 1}
+  m_Center: {x: 0, y: 5.000001, z: 0}
 --- !u!114 &313454074789284262
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,6 +125,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   correspondingUICoordsGameObject: {fileID: 0}
   correspondingUICoords: {x: 0, y: 0, z: 0}
+--- !u!114 &3718648417664719784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3303500628321740877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d86727d8a383fa140b9b1e529d4bf73c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  originalColor: {r: 0.34117648, g: 0.3647059, b: 0.62352943, a: 1}
+  triggerColor: {r: 1, g: 1, b: 1, a: 1}
+  transitionSpeed: 2
+  cubeRenderer1: {fileID: 1405398142576962479}
+  cubeRenderer2: {fileID: 3533363904652038553}
+  enterSound: {fileID: 8300000, guid: 289c8130aa296324b9b777467b8c4d26, type: 3}
+  useManualDetection: 0
+  detectionRadius: 2
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 1
 --- !u!1 &6418327615524180908
 GameObject:
   m_ObjectHideFlags: 0
